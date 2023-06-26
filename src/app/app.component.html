@@ -1,41 +1,48 @@
-<!-- <app-navbar></app-navbar>
-<app-post [fromParent]="parentMessage" (messageEvent)="receiveMessage($event)"></app-post>
-<p>{{ fromChildOutput }}</p> -->
+<!-- <app-post></app-post> -->
 
-<div class="main">
+<p>{{ postArray }}</p>
 
-    <app-post></app-post>
-     <h1>Post Form</h1>  
-    <div>
-        <input type="text" [(ngModel)]="postTitle" placeholder="Post Title">
-    </div><br>
+<ul>
+    <li>{{ postArray[0] }}</li>
+    <li>{{ postArray[1] }}</li>
+    <li>{{ postArray[2] }}</li>
+    <li>{{ postArray[3] }}</li>
+    <li>{{ postArray[4] }}</li>
+</ul>
 
-    <div>
-        <textarea [(ngModel)]="postDetails" rows="10" cols="50" placeholder="Post Details"></textarea>
-    </div><br>
+<p>Fetched using *ngFor Directive  </p>
+<ul>
+    <li *ngFor="let post of postArray"> {{ post }} </li>
+</ul>
 
-    <div>
-        <input type="text" [(ngModel)]="imgURL"  alt="" placeholder="Post Image Url">
-    </div><br>
+<p>Fetching Object Array using *ngFor Directive</p>
 
-    <div>
-        <input type="text" [(ngModel)]="postUrl" placeholder="Post Url">
-    </div><br>
+<button (click)="addNew()">Add New Data</button>
 
-    <div>
-        <input type="checkbox" [(ngModel)]="addBackground"> Add Background
-    </div>
+<div *ngIf="objArray.length > 0; else noData">
+    <ul>
+        <li *ngFor = "let post of objArray; let i = index">
+            {{ post.postTitle }}
+            <button (click)="onDelete(i)">Delete</button>
+            <br>
+        </li>
+    </ul>
 </div>
+<ng-template #noData>
+    <p>There is no Data to fetch .... </p>
+</ng-template>
 
-<br><br><br><br>
+<p>ngSwitch Cases</p>
+<div>
+    <button (click)="onClick('step 1')">Step 1</button> 
+    <button (click)="onClick('step 2')">Step 2</button> 
+    <button (click)="onClick('step 3')">Step 3</button> 
+</div>
+<br>
 
-<div class="main">
-
-    <img [src]="imgURL" alt="">
-    <h1 >
-        <span [class.add-background]="addBackground">{{ postTitle }}</span>
-    </h1> <br>
-    <p>{{ postDetails }}</p> <br>
-    <a [href]="postUrl" target="_blank" [style.display]="postUrl ? 'block' : 'none' ">More Details</a>
-
+<div [ngSwitch]="stepForm">
+    <div *ngSwitchCase= "'step 1'">Step 1 Form</div>
+    <div *ngSwitchCase= "'step 2'">Step 2 Form</div>
+    <div *ngSwitchCase= "'step 3'">Step 3 Form</div>
+    <div *ngSwitchDefault>Something else ....</div>
 </div>

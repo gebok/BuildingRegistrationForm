@@ -1,40 +1,41 @@
-import { Component, ViewChild, AfterViewInit } from '@angular/core';
-import { PostComponent } from './post/post.component';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements AfterViewInit {
+export class AppComponent {
 
-  title = 'Post Form';
-  parentMessage: string = "Message coming from parent component";
+  stepForm: string | undefined;
 
-  message: string | undefined;
-  fromChildOutput: string | undefined;
+  postArray: Array<string> = [
+    'Post 1', 'Post 2', 'Post 3', 'Post 4', 'Post 5'
+  ];
 
-  // -----------------------------------------------------------
-
-  postTitle: string | any;
-  postDetails: string | any;
-  imgURL: string | any;
-  postUrl: string | any;
-  addBackground: boolean = false;
-
-  @ViewChild(PostComponent) childComp: any;
+  objArray: Array<any> = [
+    { id: 1, postTitle: 'Post 1', },
+    { id: 2, postTitle: 'Post 2', },
+    { id: 3, postTitle: 'Post 3', },
+    { id: 4, postTitle: 'Post 4', },
+    { id: 5, postTitle: 'Post 5', }
+  ];
 
   constructor() {
-    // console.log(this.childComp);
+    for (let i = 0; i < this.postArray.length; i++);
+    console.log(this.postArray);
   }
 
-  ngAfterViewInit(): void {
-    // console.log(this.childComp);
-    // this.message = this.childComp.childMessage; 
+  addNew() {
+    this.objArray.push({ id: 6, postTitle: 'Post 6' });
   }
 
-  receiveMessage($event: any) {
-    console.log($event);
-    this.fromChildOutput = $event;
+  onDelete(index: number) {
+    this.objArray.splice(index, 1);
   }
+
+  onClick(status: any) {
+    this.stepForm = status;
+  }
+
 }
