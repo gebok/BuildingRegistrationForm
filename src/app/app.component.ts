@@ -22,20 +22,48 @@ export class AppComponent {
   ];
 
   constructor() {
-    for (let i = 0; i < this.postArray.length; i++);
-    console.log(this.postArray);
+    // for (let i = 0; i < this.postArray.length; i++);
+    // console.log(this.postArray);
   }
 
-  addNew() {
-    this.objArray.push({ id: 6, postTitle: 'Post 6' });
-  }
+  // addNew() {
+  //   this.objArray.push({ id: 6, postTitle: 'Post 6' });
+  // }
 
+  // onDelete(index: number) {
+  //   this.objArray.splice(index, 1);
+  // }
+
+  // onClick(status: any) {
+  //   this.stepForm = status;
+  // }
+
+  // ----- ANGULAR DIRECTIVE TASK -----
+
+  id: number | any;
+  name: string | any;
+  email: string | any;
+  address: string | any;
+
+  userDetail: Array<any> = [];
+
+  // userDetail: Array<any> = [
+  //   { id: 1, name: 'John James', email: 'john.james@gmail.com', address: 'SATRC, Portion 202, 10-Mile', },
+  //   { id: 2, name: 'James John', email: 'james.john@gmail.com', address: 'SATRC, Portion 202, 9-Mile', },
+  //   { id: 3, name: 'Paul Blow', email: 'paul.blow@gmail.com', address: 'SATRC, Portion 202, Markham Bridge', }
+  // ];
+
+  saveData() {
+    this.userDetail.push({
+      "name": this.name,
+      "email": this.email,
+      "address": this.address
+    });
+      console.log(this.userDetail);
+  }
+  
   onDelete(index: number) {
-    this.objArray.splice(index, 1);
-  }
-
-  onClick(status: any) {
-    this.stepForm = status;
+    this.userDetail.splice(index, 1);
   }
 
 }

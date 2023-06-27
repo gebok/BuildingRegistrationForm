@@ -1,6 +1,6 @@
 <!-- <app-post></app-post> -->
 
-<p>{{ postArray }}</p>
+<!-- <p>{{ postArray }}</p>
 
 <ul>
     <li>{{ postArray[0] }}</li>
@@ -15,11 +15,11 @@
     <li *ngFor="let post of postArray"> {{ post }} </li>
 </ul>
 
-<p>Fetching Object Array using *ngFor Directive</p>
+<p>Fetching Object Array using *ngFor Directive</p> -->
 
-<button (click)="addNew()">Add New Data</button>
+<!-- <button (click)="addNew()">Add New Data</button> -->
 
-<div *ngIf="objArray.length > 0; else noData">
+<!-- <div *ngIf="objArray.length > 0; else noData">
     <ul>
         <li *ngFor = "let post of objArray; let i = index">
             {{ post.postTitle }}
@@ -27,8 +27,9 @@
             <br>
         </li>
     </ul>
-</div>
-<ng-template #noData>
+</div> -->
+
+<!-- <ng-template #noData>
     <p>There is no Data to fetch .... </p>
 </ng-template>
 
@@ -45,4 +46,39 @@
     <div *ngSwitchCase= "'step 2'">Step 2 Form</div>
     <div *ngSwitchCase= "'step 3'">Step 3 Form</div>
     <div *ngSwitchDefault>Something else ....</div>
+</div> -->
+
+<!-- NG DIRECTIVE TASK -->
+
+<div class="main-area">
+    <h3>User Details</h3>
+    <div><input type="text" placeholder="Name" [(ngModel)] = "name"></div> <br>
+    <div><input type="text" placeholder="Email" [(ngModel)] = "email"></div> <br>
+    <div><textarea cols="30" rows="10" placeholder="Address" [(ngModel)] = "address"></textarea></div><br>
+    <div><button (click)="saveData()">Save Data</button></div>
+    <br><br>
 </div>
+
+<div *ngIf="userDetail.length > 0; else noData">
+    <div class="table-area">
+        <table width="600">
+            <thead>
+                <th>#</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Address</th>
+                <th>Action</th>
+            </thead>
+            <tr *ngFor = "let user of userDetail; let num = index">
+                <td>{{ num + 1 }}</td>
+                <td>{{ user.name }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.address }}</td>
+                <button (click)="onDelete(num)">Delete</button>
+            </tr>
+        </table>
+    </div>
+</div>
+<ng-template #noData>
+    <h4>No data to show ....</h4>
+</ng-template>
