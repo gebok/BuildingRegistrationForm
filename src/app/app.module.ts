@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { PostComponent } from './post/post.component';
 import { PostListComponent } from './post-list/post-list.component';
+import { TdFormComponent } from './td-form/td-form.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { PostListComponent } from './post-list/post-list.component';
     NavbarComponent,
     PostComponent,
     PostListComponent,
+    TdFormComponent,
   ],
   imports: [
     BrowserModule,
