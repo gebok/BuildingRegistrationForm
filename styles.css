@@ -64,6 +64,7 @@ input[type="submit"] {
     background-color: #3b3b4f;
     border-color: white;
     padding-bottom: 2em;
+    vertical-align: middle;
 }
 
 input[type="file"] {
